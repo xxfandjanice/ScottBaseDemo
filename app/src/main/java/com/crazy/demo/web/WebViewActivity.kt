@@ -73,9 +73,9 @@ class WebViewActivity : BaseActivity<ActivityWebViewBinding, BaseViewModel>() {
         }
 
         url?.run {
-            loge("url")
+            loge("url:" + this)
             if (isUrl) binding.webView.loadUrl(this)
-            else binding.webView.loadDataWithBaseURL(null, url, "text/html", "utf-8", null)
+            else binding.webView.loadDataWithBaseURL(null, this, "text/html", "utf-8", null)
         }
     }
 

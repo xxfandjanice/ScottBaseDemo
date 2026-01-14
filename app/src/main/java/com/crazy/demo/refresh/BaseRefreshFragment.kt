@@ -14,9 +14,9 @@ abstract class BaseRefreshFragment<V : ViewDataBinding, VM : BaseViewModel> :
     private val TAG_TIMER: Int? = 1000
 
     private val handler = object : Handler(Looper.getMainLooper()) {
-        override fun handleMessage(msg: Message?) {
+        override fun handleMessage(msg: Message) {
             super.handleMessage(msg)
-            when (msg?.what) {
+            when (msg.what) {
                 TAG_TIMER -> reFreshData()
             }
         }

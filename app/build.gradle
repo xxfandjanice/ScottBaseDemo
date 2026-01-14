@@ -9,15 +9,15 @@ static def releaseTime() {
 }
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.2"
+    compileSdk 34
+    namespace "com.crazy.demo"
     defaultConfig {
         applicationId "com.crazy.demo"
-        minSdkVersion 21
-        targetSdkVersion 29
+        minSdk 23
+        targetSdk 34
         versionCode 1
-        versionName "1.0.0"
-        flavorDimensions "versionCode"
+        versionName "1.0"
+
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -35,6 +35,8 @@ android {
             minifyEnabled false
             signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            resValue "string", "app_name", "KotlinDemo"
+            buildConfigField "String", "BASE_URL", '"https://"'
         }
 
         release {
@@ -42,29 +44,31 @@ android {
             zipAlignEnabled true
             signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            resValue "string", "app_name", "KotlinDemo开发版"
+            buildConfigField "String", "BASE_URL", '"https://"'
         }
     }
 
     dataBinding {
         enabled = true
     }
-
+    flavorDimensions += "version"
     productFlavors {
-        prod {
-            applicationId "com.crazy.demo"
-            resValue "string", "app_name", "KotlinDemo"
-            buildConfigField "String", "BASE_URL", '"https://"'
+        create("dev") {
+            dimension = "version"
+            applicationIdSuffix = ".dev"
+            versionNameSuffix = "-dev"
         }
-        dev {
-            applicationId "com.crazy.demo.dev"
-            resValue "string", "app_name", "KotlinDemo开发版"
-            buildConfigField "String", "BASE_URL", '"https://"'
+        create("prod") {
+            dimension = "version"
+            applicationIdSuffix = ".prod"
+            versionNameSuffix = "-prod"
         }
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 
     lintOptions {

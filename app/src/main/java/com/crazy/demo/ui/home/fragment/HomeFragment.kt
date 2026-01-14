@@ -17,13 +17,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(),
 
     override fun initVariableId() = BR.viewModel
 
-//    private val adapter by lazy {
-//        BaseBindAdapter<Post>(
-//            R.layout.item_recommend,
-//            BR.bean
-//        )
-//    }
-
     override fun initView() {
         binding.clickListener = this
 

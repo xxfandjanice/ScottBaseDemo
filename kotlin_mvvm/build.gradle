@@ -61,5 +61,5 @@ dependencies {
     // ViewModel and LiveData
     api "androidx.lifecycle:lifecycle-extensions:2.2.0"
     //recyclerViewAdapter
-    api 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.49-androidx'
+    api 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.50'
 }
